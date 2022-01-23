@@ -99,6 +99,12 @@ and copy the values from `development` environment to `test` and save.
 rails s
 ```
 
+### Refer the below link to get details about the API 
+
+```shell
+https://docs.google.com/document/d/1L2Db2bgpZZlUIbM1GIZIYaGEM7DsT9wGbbbnklplPV8/edit?usp=sharing
+```
+
 -----
 # Best practices
 

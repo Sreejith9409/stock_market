@@ -1,14 +1,14 @@
 class SubscriptionsController < ApplicationController
   def index
     render_success_response({
-      document: array_serializer.new(current_user.subscriptions.includes(:stock), serializer: SubscriptionSerializer)
+      subscription: array_serializer.new(current_user.subscriptions.includes(:stock), serializer: SubscriptionSerializer)
     })
   end
 
   def create
     subscription = Subscription.create!(subscription_params)
     render_success_response({
-      document: single_serializer.new(subscription, serializer: SubscriptionSerializer)
+      subscription: single_serializer.new(subscription, serializer: SubscriptionSerializer)
     })
   rescue StandardError => e
     render_unprocessable_entity(error: e.message)
@@ -17,7 +17,7 @@ class SubscriptionsController < ApplicationController
   def remove_subscription
     subscription = Subscription.find_by_id(params[:id]).delete
     render_success_response({
-      document: single_serializer.new(subscription, serializer: SubscriptionSerializer)
+      subscription: single_serializer.new(subscription, serializer: SubscriptionSerializer)
     })
   rescue StandardError => e
     render_unprocessable_entity(error: e.message)

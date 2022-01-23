@@ -14,8 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def register_success
       render json: {
-        status: {code: 200, message: 'Logged in successfully.'},
-        data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+        status: {code: 200, message: 'Signed up successfully.'}
       }
     end
 
