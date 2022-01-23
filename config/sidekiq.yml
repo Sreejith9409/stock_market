@@ -1,0 +1,13 @@
+---
+:concurrency: 5
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 10
+:queues:
+  - cron
+
+:schedule:
+  Stocks::UpdateValueJob:
+    every: 1m
+    class: Stocks::UpdateValueJob

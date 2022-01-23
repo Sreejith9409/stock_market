@@ -58,12 +58,22 @@ module ApplicationMethods
   end
 
   def track_error(exception)
-    log_and_report(exception, {
+    log_exception(exception, {
       params: params.try(:to_json), request_body: request.try(:body).try(:to_json),
-      current_user_id: current_user.try(:id)
-    }, "api")
+      current_user_id: current_user.try(:id)}
+    )
   end
 
+  def log_exception(exception, context_params = {})
+    Rails.logger.error(exception.message)
+    Rails.logger.error("context_params: #{merged_context_params(exception, context_params)}")
+    Rails.logger.error(exception.backtrace.try(:join, "\n"))
+  end
+
+  def merged_context_params(exception, context_params)
+    context_params.merge!(exception.try(:context_params) || {})
+  end
+  
   def array_serializer
     ActiveModel::Serializer::CollectionSerializer
   end

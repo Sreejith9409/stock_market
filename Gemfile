@@ -40,4 +40,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-jwt'
-gem 'fast_jsonapi'
+gem 'pagy'
+gem 'active_model_serializers'
+gem 'faker'
+gem 'sidekiq'
+gem 'activestorage-validator'
